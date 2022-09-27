@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _strstr - strcasestr - locate a substring
@@ -11,19 +12,20 @@ char *_strstr(char *haystack, char *needle)
 {
 	int i, j;
 
-	for (i = 0; haystack[i] > '\0'; j++)
+	while (*haystack != '\0')
 	{
-		for (i = 0; haystack[j] > '\0' && needle[j - i] > '\0'; j++)
+		char *beginning = haystack;
+		char *pattern = needle;
+
+		while (*pattern == *haystack && *pattern != '\0'
+			&& *haystack != '\0')
 		{
-			if (haystack[j] != needle[j - i])
-			{
-				break;
-			}
+			haystack++;
+			pattern++;
 		}
-		if (needle[j - i] == '\0')
-		{
-			return (haystack + i);
-		}
+		if (*pattern == '\0')
+			return (beginning);
+		haystack = beginning + 1;
 	}
-	return (0);
+	return ('\0');
 }
