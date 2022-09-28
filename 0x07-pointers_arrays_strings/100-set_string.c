@@ -1,8 +1,3 @@
-/**
- * File: 10-set_string.c
- * Auth: Chydy Paul
- */
-
 #include "main.h"
 
 /**
